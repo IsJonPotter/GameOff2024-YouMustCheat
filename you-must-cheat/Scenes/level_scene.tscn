@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkxr6afd6abce"]
+[gd_scene load_steps=3 format=3 uid="uid://bkxr6afd6abce"]
 
-[ext_resource type="PackedScene" uid="uid://blgqgq5h3oatn" path="res://YouMustCheatGameOff2024/Scenes/statue.tscn" id="1_fsox7"]
+[ext_resource type="Script" path="res://Scripts/level_scene.gd" id="1_2xwnp"]
+[ext_resource type="PackedScene" uid="uid://blgqgq5h3oatn" path="res://Scenes/statue.tscn" id="1_fsox7"]
 
 [node name="LevelScene" type="Node2D"]
+script = ExtResource("1_2xwnp")
 
 [node name="Statue" parent="." instance=ExtResource("1_fsox7")]
 position = Vector2(167, 142)
