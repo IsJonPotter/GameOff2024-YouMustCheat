@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkxr6afd6abce"]
+
+[ext_resource type="PackedScene" uid="uid://blgqgq5h3oatn" path="res://YouMustCheatGameOff2024/Scenes/statue.tscn" id="1_fsox7"]
+
+[node name="LevelScene" type="Node2D"]
+
+[node name="Statue" parent="." instance=ExtResource("1_fsox7")]
+position = Vector2(167, 142)
+canMove = true
