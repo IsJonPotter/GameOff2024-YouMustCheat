@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://h12xmk3eupeb" path="res://Assets/Sprites/Statue.png" id="2_7vrfi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77yws"]
-size = Vector2(42, 42)
+size = Vector2(24, 12)
 
 [node name="Statue" type="CharacterBody2D"]
 script = ExtResource("1_pcv0j")
@@ -14,4 +14,5 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_7vrfi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_77yws")
