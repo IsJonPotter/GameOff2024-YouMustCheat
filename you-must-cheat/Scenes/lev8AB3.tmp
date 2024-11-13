@@ -88,9 +88,11 @@ physics_layer_0/collision_layer = 1
 sources/4 = SubResource("TileSetAtlasSource_fglh0")
 pattern_0 = SubResource("TileMapPattern_o1ssx")
 
-[node name="LevelScene" type="Node2D" node_paths=PackedStringArray("cheat_code_entry")]
+[node name="LevelScene" type="Node2D"]
 script = ExtResource("1_2xwnp")
-cheat_code_entry = NodePath("Statue/Camera2D/Cheat Code Entry Screen")
+
+[node name="Cheat Code Entry Screen" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_t16m3")]
+player = NodePath("../Statue")
 
 [node name="Statue" parent="." instance=ExtResource("1_fsox7")]
 z_index = 2
@@ -98,15 +100,6 @@ position = Vector2(264, 216)
 
 [node name="Camera2D" type="Camera2D" parent="Statue"]
 zoom = Vector2(3, 3)
-
-[node name="Cheat Code Entry Screen" parent="Statue/Camera2D" node_paths=PackedStringArray("player") instance=ExtResource("2_t16m3")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-size_flags_horizontal = 4
-player = NodePath("../..")
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(3, 3)
