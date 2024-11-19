@@ -1,9 +1,7 @@
 extends CharacterBody2D
 
-
 @export var SPEED = 300.0
 @export var canMove = false
-
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
