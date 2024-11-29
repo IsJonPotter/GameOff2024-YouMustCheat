@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwt2jh5h4xffs"]
+
+[ext_resource type="Texture2D" uid="uid://b5uxgomxs1qw8" path="res://Assets/Sprites/Fossil.png" id="1_jjqqq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nntvm"]
+size = Vector2(42, 36)
+
+[node name="Fossil Display" type="RigidBody2D"]
+gravity_scale = 0.0
+
+[node name="Fossil" type="Sprite2D" parent="."]
+texture = ExtResource("1_jjqqq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nntvm")

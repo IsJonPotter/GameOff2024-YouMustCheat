@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3gk7b")
 
-[node name="Code Container" type="MarginContainer" parent="."]
+[node name="CodeContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -20,10 +20,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Code Container"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CodeContainer"]
 layout_mode = 2
 
-[node name="Label Container" type="MarginContainer" parent="."]
+[node name="LabelContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,11 +37,11 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Text Background" type="ColorRect" parent="Label Container"]
+[node name="Text Background" type="ColorRect" parent="LabelContainer"]
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="RichTextLabel" parent="Label Container/Text Background"]
+[node name="Label" type="RichTextLabel" parent="LabelContainer/Text Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
