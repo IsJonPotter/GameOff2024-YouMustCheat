@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b38dw3lln1v5c"]
+
+[ext_resource type="Script" path="res://Scripts/push_block.gd" id="1_inx68"]
+[ext_resource type="Texture2D" uid="uid://dhivtnsrdhb8s" path="res://Assets/Sprites/Block.png" id="1_tc3ar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhti"]
+size = Vector2(30, 33)
+
+[node name="Push Block" type="RigidBody2D" groups=["Blocks"]]
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+script = ExtResource("1_inx68")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_tc3ar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_uyhti")

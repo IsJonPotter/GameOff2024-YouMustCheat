@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqt171o4x60lj"]
+
+[ext_resource type="Script" path="res://Scripts/sign.gd" id="1_lme88"]
+[ext_resource type="Texture2D" uid="uid://cc1tid7q7p3x5" path="res://Assets/Sprites/Sign.png" id="1_yhtn0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tb53y"]
+size = Vector2(42, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wet27"]
+size = Vector2(42, 23)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hqth6"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Sign" type="StaticBody2D"]
+script = ExtResource("1_lme88")
+
+[node name="SignSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -21)
+texture = ExtResource("1_yhtn0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_tb53y")
+
+[node name="InteractionCircle" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionCircle"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_wet27")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -21.0
+offset_top = -62.0
+offset_right = 21.0
+offset_bottom = -42.0
+
+[node name="Label" type="Label" parent="ColorRect"]
+offset_top = -3.0
+offset_right = 42.0
+offset_bottom = 20.0
+text = "Enter"
+label_settings = SubResource("LabelSettings_hqth6")
+
+[node name="DialogueTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="InteractionCircle" to="." method="_on_interaction_circle_body_entered"]
+[connection signal="body_exited" from="InteractionCircle" to="." method="_on_interaction_circle_body_exited"]
+[connection signal="timeout" from="DialogueTimer" to="." method="_on_dialogue_timer_timeout"]

@@ -1,0 +1,4 @@
+Strange contraption said to have been left behind by an ancient civilisation. Only the strongest can push the block into the hole.
+- Reset Block
+	[signal arg="reset_block"]
+- Leave
