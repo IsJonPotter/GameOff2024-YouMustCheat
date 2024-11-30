@@ -21,7 +21,7 @@ var entered_code: Array[int] = []
 var code_length: int = 8
 var code_position: int = 0
 var can_code: bool = false
-
+var exit_open: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	entered_code.resize(code_length)
@@ -60,11 +60,13 @@ func _process(_delta):
 		print(entered_code)
 		
 		if entered_code == move_code:
-			unlock_movement(entered_code)
+			unlock_movement()
 		elif entered_code == door_code:
-			unlock_door_open(entered_code)
+			unlock_door_open()
 		elif entered_code == push_code:
-			unlock_push_block(entered_code)
+			unlock_push_block()
+		elif entered_code == exit_code:
+			unlock_exit()
 		else:
 			display_message("Invalid code")
 		
@@ -78,24 +80,31 @@ func display_message(message: String):
 	text_background.visible = true
 	text_timer.start()
 
-func unlock_movement(code : Array):
+func unlock_movement():
 	if player.SPEED != player.base_speed:
 		player.SPEED = player.base_speed
 		display_message("The statue can now move!")
 	else:
 		display_message("Code already used")
 
-func unlock_door_open(code : Array):
+func unlock_door_open():
 	if !player.canOpenDoor:
 		player.canOpenDoor = true
 		display_message("The statue can now open doors!")
 	else:
 		display_message("Code already used")
 
-func unlock_push_block(code : Array):
+func unlock_push_block():
 	if !player.canPush:
 		player.canPush = true
 		display_message("The statue can now push objects!")
+	else:
+		display_message("Code already used")
+
+func unlock_exit():
+	if !exit_open:
+		exit.open_gate()
+		display_message("The exit has been opened!")
 	else:
 		display_message("Code already used")
 
