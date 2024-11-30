@@ -7,6 +7,11 @@ enum Codes {UP, LEFT, DOWN, RIGHT}
 @onready var label = $"LabelContainer/Text Background/Label"
 @onready var text_timer = $TextTimer
 
+# AudioStreamPlayers
+@onready var code_entry_sound = $"Code Audio/CodeEntrySound"
+@onready var error_sound = $"Code Audio/ErrorSound"
+@onready var success_sound = $"Code Audio/SuccessSound"
+
 # Scenes
 @export var player: CharacterBody2D 
 @export var exit: StaticBody2D
@@ -36,19 +41,19 @@ func _process(_delta):
 	if can_code:
 		if Input.is_action_just_pressed("code_up"):
 			entered_code[code_position] = Codes.UP
-			print(entered_code[code_position])
+			code_entry_sound.play()
 			code_position += 1
 		elif Input.is_action_just_pressed("code_left"):
 			entered_code[code_position] = Codes.LEFT
-			print(entered_code[code_position])
+			code_entry_sound.play()
 			code_position += 1
 		elif Input.is_action_just_pressed("code_down"):
 			entered_code[code_position] = Codes.DOWN
-			print(entered_code[code_position])
+			code_entry_sound.play()
 			code_position += 1
 		elif Input.is_action_just_pressed("code_right"):
 			entered_code[code_position] = Codes.RIGHT
-			print(entered_code[code_position])
+			code_entry_sound.play()
 			code_position += 1
 		elif Input.is_action_just_pressed("reset"):
 			entered_code = []
@@ -57,8 +62,6 @@ func _process(_delta):
 			display_message("Code Reset")
 	
 	if code_position == code_length:
-		print(entered_code)
-		
 		if entered_code == move_code:
 			unlock_movement()
 		elif entered_code == door_code:
@@ -69,6 +72,7 @@ func _process(_delta):
 			unlock_exit()
 		else:
 			display_message("Invalid code")
+			error_sound.play()
 		
 		entered_code = []
 		entered_code.resize(code_length)
@@ -84,29 +88,37 @@ func unlock_movement():
 	if player.SPEED != player.base_speed:
 		player.SPEED = player.base_speed
 		display_message("The statue can now move!")
+		success_sound.play()
 	else:
 		display_message("Code already used")
+		error_sound.play()
 
 func unlock_door_open():
 	if !player.canOpenDoor:
 		player.canOpenDoor = true
 		display_message("The statue can now open doors!")
+		success_sound.play()
 	else:
 		display_message("Code already used")
+		error_sound.play()
 
 func unlock_push_block():
 	if !player.canPush:
 		player.canPush = true
 		display_message("The statue can now push objects!")
+		success_sound.play()
 	else:
 		display_message("Code already used")
+		error_sound.play()
 
 func unlock_exit():
 	if !exit_open:
 		exit.open_gate()
 		display_message("The exit has been opened!")
+		success_sound.play()
 	else:
 		display_message("Code already used")
+		error_sound.play()
 
 func _on_text_timer_timeout():
 	text_background.visible = false

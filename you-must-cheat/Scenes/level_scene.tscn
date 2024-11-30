@@ -102,8 +102,6 @@ cheat_code_entry = NodePath("Statue/Camera2D/Cheat Code Entry Screen")
 z_index = 2
 y_sort_enabled = true
 position = Vector2(265, 214)
-canOpenDoor = true
-canPush = true
 
 [node name="Camera2D" type="Camera2D" parent="Statue"]
 zoom = Vector2(3, 3)
