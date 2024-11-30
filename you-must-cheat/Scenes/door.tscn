@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://rw8nq31gvus0"]
+[gd_scene load_steps=14 format=3 uid="uid://rw8nq31gvus0"]
 
 [ext_resource type="Texture2D" uid="uid://fequvdfsc4qf" path="res://Assets/Sprites/Door-Sheet.png" id="1_g7wfm"]
 [ext_resource type="Script" path="res://Scripts/door.gd" id="1_xamkn"]
+[ext_resource type="AudioStream" uid="uid://d3e0fhaposmtp" path="res://Assets/SFX/05_door_open_2.mp3" id="3_eotbk"]
+[ext_resource type="AudioStream" uid="uid://dgrjov88jsh06" path="res://Assets/SFX/06_door_close_1.mp3" id="3_xjy53"]
+[ext_resource type="AudioStream" uid="uid://c0juyqyvfn6ce" path="res://Assets/SFX/05_door_open_1.mp3" id="5_a0cgc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0carw"]
 size = Vector2(48, 36)
@@ -50,7 +53,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_ovq23"]
 resource_name = "close"
-length = 0.333337
+length = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -75,6 +78,25 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Audio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_eotbk")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_xjy53")
+}],
+"times": PackedFloat32Array(0, 0.333333)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_a5wvc"]
 resource_name = "locked"
@@ -94,7 +116,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_pc3le"]
 resource_name = "open"
-length = 0.333337
+length = 0.500003
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -119,6 +141,21 @@ tracks/1/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Audio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.695947,
+"start_offset": 0.0,
+"stream": ExtResource("5_a0cgc")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_enqr3"]
 resource_name = "unlock"
@@ -167,6 +204,8 @@ root_node = NodePath("../Door-sheet")
 libraries = {
 "": SubResource("AnimationLibrary_nfi26")
 }
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="Door Opening Spots" to="." method="_on_door_opening_spots_body_entered"]
 [connection signal="body_exited" from="Door Opening Spots" to="." method="_on_door_opening_spots_body_exited"]

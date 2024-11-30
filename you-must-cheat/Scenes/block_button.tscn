@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://6gop4ltbyp3t"]
+[gd_scene load_steps=5 format=3 uid="uid://6gop4ltbyp3t"]
 
 [ext_resource type="Script" path="res://Scripts/block_button.gd" id="1_u8oxi"]
 [ext_resource type="Texture2D" uid="uid://k8rr0avgre8x" path="res://Assets/Sprites/Hole-Sheet.png" id="2_e5v5c"]
+[ext_resource type="AudioStream" uid="uid://cbn7asf0ajuxf" path="res://Assets/SFX/03_crate_open_1.wav" id="3_4mjrg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4au8d"]
 size = Vector2(12, 12)
@@ -15,5 +16,8 @@ hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4au8d")
+
+[node name="Block Drop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4mjrg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://8ljium85o67h"]
+[gd_scene load_steps=7 format=3 uid="uid://8ljium85o67h"]
 
 [ext_resource type="Script" path="res://Scripts/cheat_code_entry.gd" id="1_3gk7b"]
+[ext_resource type="FontFile" uid="uid://14c2wjf0jxr8" path="res://Assets/Fonts/monogram.ttf" id="2_djppw"]
+[ext_resource type="AudioStream" uid="uid://dw4e6cek81vjs" path="res://Assets/SFX/JDSherbert - Pixel UI SFX Pack - Error 2 (Square).mp3" id="2_ro861"]
+[ext_resource type="AudioStream" uid="uid://cwf1we0cfb8qc" path="res://Assets/SFX/JDSherbert - Pixel UI SFX Pack - Cancel 2 (Square).mp3" id="3_h6dng"]
+[ext_resource type="AudioStream" uid="uid://cxurctbcsws4g" path="res://Assets/SFX/JDSherbert - Pixel UI SFX Pack - Select 1 (Square).mp3" id="4_5pqq7"]
+
+[sub_resource type="Theme" id="Theme_bcrup"]
+default_font = ExtResource("2_djppw")
+default_font_size = 32
 
 [node name="Cheat Code Entry Screen" type="Control"]
 layout_mode = 3
@@ -30,10 +38,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -143.0
-offset_top = -20.0
-offset_right = 150.0
-offset_bottom = 20.0
+offset_left = -146.5
+offset_top = -38.0
+offset_right = 146.5
+offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -49,11 +57,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -146.5
-offset_top = -20.0
+offset_top = -16.5
 offset_right = 146.5
-offset_bottom = 20.0
+offset_bottom = 9.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_bcrup")
 bbcode_enabled = true
 text = "Test text"
 fit_content = true
@@ -62,5 +71,18 @@ scroll_active = false
 [node name="TextTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="Code Audio" type="Node" parent="."]
+
+[node name="ErrorSound" type="AudioStreamPlayer2D" parent="Code Audio"]
+stream = ExtResource("2_ro861")
+
+[node name="CodeEntrySound" type="AudioStreamPlayer2D" parent="Code Audio"]
+stream = ExtResource("3_h6dng")
+
+[node name="SuccessSound" type="AudioStreamPlayer2D" parent="Code Audio"]
+stream = ExtResource("4_5pqq7")
+
+[node name="ResetSound" type="AudioStreamPlayer2D" parent="Code Audio"]
 
 [connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]

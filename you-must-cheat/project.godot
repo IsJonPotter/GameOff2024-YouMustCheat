@@ -34,8 +34,8 @@ directories/dtl_directory={
 "start_timeline": "res://Timelines/start_timeline.dtl"
 }
 glossary/default_case_sensitive=true
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_list=["res://Timelines/Styles/New Style.tres"]
+layout/default_style=""
 variables={}
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
